@@ -1,0 +1,24 @@
+[server]
+# Streamlit's source watcher inspects every imported module's __path__. That
+# triggers `transformers`' lazy loader, which tries to import vision models
+# that need torchvision - flooding the console with thousands of harmless
+# ModuleNotFoundError tracebacks and burying real errors.
+#
+# Turning the watcher off silences that. The trade-off is no auto-reload on
+# save: restart `streamlit run app.py` after editing. Set this back to "auto"
+# if you would rather have hot reload than clean logs.
+fileWatcherType = "none"
+headless = true
+
+[client]
+# Hide Streamlit's developer hamburger (Rerun / Clear cache / Record).
+# LLM name and API key live in our own Settings dialog instead.
+toolbarMode = "minimal"
+showSidebarNavigation = false
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+base = "light"
+primaryColor = "#1a7f7f"
